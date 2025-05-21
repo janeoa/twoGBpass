@@ -1,4 +1,4 @@
-This project aim to make a FPGA bitstream for the tang25k SoM on the custom board to make a ethernet to ethernet passthough channel
+This project aim to make a FPGA bitstream for the tang25k SoM on the custom board to make a ethernet to ethernet passthough channel.
 
 # SoM
 FPGA GW5A-LV25MG121C1/l0
@@ -7,6 +7,11 @@ FPGA GW5A-LV25MG121C1/l0
 two RJ45 ports with Motorcom YT8531C PHY IC each.
 
 # Library
+Heavily relies on oss-cad-suite and litex
+```bash
+source ~/dev/oss-cad-suite/environment
+```
+
 This project uses https://github.com/enjoy-digital/liteeth
 
 # Pinout
