@@ -1,5 +1,27 @@
 This project aim to make a FPGA bitstream for the tang25k SoM on the custom board to make a ethernet to ethernet passthough channel.
 
+# Usage
+## Build the container
+```bash
+docker build . -t gowin-docker:latest
+```
+## Run the container
+```bash
+docker run --rm -it \
+    --mac-address <your-mac-address> \
+    -v <path-to-gowin-license>:/data/license.lic \
+    -v <path-to-project-directory>:/workspace \
+    gowin-docker:latest <python-top-module-file> <tcl-file>
+
+# example 
+# docker run --rm -it \
+#    --mac-address 00:11:22:33:44:55 \
+#    -v ~/dev/gowin-docker/gowin_E_....lic:/data/license.lic \
+#    -v ~/dev/twogigabits:/workspace \
+#    gowin-docker:latest eth_bridge.py build_tang25k.tcl
+```
+
+
 # SoM
 FPGA GW5A-LV25MG121C1/l0
 
@@ -7,10 +29,7 @@ FPGA GW5A-LV25MG121C1/l0
 two RJ45 ports with Motorcom YT8531C PHY IC each.
 
 # Library
-Heavily relies on oss-cad-suite and litex
-```bash
-source ~/dev/oss-cad-suite/environment
-```
+Heavily relies on oss-cad-suite and litex, that are wrapped in the docker
 
 This project uses https://github.com/enjoy-digital/liteeth
 

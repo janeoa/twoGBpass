@@ -25,7 +25,9 @@ RUN apt-get update \
     && cd /usr/local/share/litex/litex \
     && ./litex_setup.py --init --install --config=standard
 
-# Ensure all new sessions activate the venv
-COPY .bashrc /root/.bashrc
-WORKDIR /usr/local/share/litex//litex/litex-boards/litex_boards/targets
-CMD bash
+COPY run_build.sh /usr/local/bin/run_build.sh
+RUN chmod +x /usr/local/bin/run_build.sh
+    
+    # Set up entry point
+WORKDIR /workspace
+ENTRYPOINT ["/bin/bash", "/usr/local/bin/run_build.sh"]
